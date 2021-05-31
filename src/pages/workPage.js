@@ -1,4 +1,3 @@
-import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Layout, Row, Col, Button, Spin } from "antd";
 import { logout, getUserList } from "../store/asyncActions/userAsyncActions";
@@ -9,7 +8,6 @@ const WorkPage = () => {
   const user = useSelector((state) => state.users.user);
   const loading = useSelector((state) => state.users.loading);
   const userList = useSelector((state) => state.users.userList);
-  const error = useSelector((state) => state.users.error);
 
   const doLogout = () => {
     if (user) dispatch(logout());
@@ -18,20 +16,18 @@ const WorkPage = () => {
   const doGetUserList = () => {
     dispatch(getUserList());
   };
-  console.log(user.role.permissions.includes("READ_USERS"));
   return (
     <Layout>
       <Spin spinning={loading}>
         <div className="header-header-wrapper">
           <div className="d-flex align-center">
             <div className="floating">
-              <img className="login__logo" src="/logo.png"></img>
+              <img className="login__logo" src="/logo.png" alt="logo"></img>
             </div>
             User list manager
           </div>
           <div>
             <div className="header__account">{user.name} </div>
-            <div className="header__account">{user.role.roleName} </div>
             <div
               onClick={() => doLogout()}
               className="header__account header__account--small"

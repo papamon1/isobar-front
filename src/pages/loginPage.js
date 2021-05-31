@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { Form, Button, Input, Spin } from "antd";
 import { useSelector, useDispatch } from "react-redux";
@@ -10,13 +10,11 @@ const LoginPage = () => {
   const loading = useSelector((state) => state.users.loading);
   const dispatch = useDispatch();
   const history = useHistory();
-  const [currentUser, setCurrentUser] = useState(null);
-  console.log(loading);
 
   const storedUser = useSelector((state) => state.users.user);
   useEffect(() => {
     if (storedUser) history.push("/work");
-  }, [storedUser]);
+  });
 
   const validateMessages = {
     required: "${label} is required!",
@@ -45,7 +43,7 @@ const LoginPage = () => {
     <div>
       <div className="login-header-wrapper">
         <div className="login__header">
-          <img src="/logo.png" className="login__logo" />
+          <img src="/logo.png" className="login__logo" alt="logo" />
           <div>
             <div className="login__title">User Management</div>
             <div className="login__title login__title--small">Login</div>

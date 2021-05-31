@@ -10,7 +10,6 @@ import {
 import axios from "../../customAxios";
 
 export const login = (values) => (dispatch, getState) => {
-  console.log(values);
   dispatch(loginStarted());
   //sorry for the hardcoeded url :_)
   axios
@@ -34,8 +33,7 @@ export const getMe = () => (dispatch, getState) => {
   axios
     .get("https://isobar-backend.herokuapp.com/api/v1/users/me")
     .then((res, err) => {
-      localStorage.setItem("isobar-token", res.data);
-      return dispatch(loginSuccess(res.data));
+      return dispatch(loginSuccess(res.data.users));
     })
     .catch((err) => {
       localStorage.removeItem("isobar-token");

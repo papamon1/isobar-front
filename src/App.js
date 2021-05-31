@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Router, Route, Redirect, Switch } from "react-router-dom";
 import "./App.css";
-import { Button, Spin } from "antd";
 import "antd/dist/antd.css";
 import LoginPage from "./pages/loginPage";
 import WorkPage from "./pages/workPage";
@@ -14,8 +13,8 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(checkUser());
-  }, []);
+    if (!loggedUser) dispatch(checkUser());
+  });
 
   return (
     <React.Fragment>

@@ -1,4 +1,3 @@
-import axios from "axios";
 import {
   LOGOUT_SUCCESS,
   LOGIN_STARTED,
