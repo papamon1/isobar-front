@@ -6,7 +6,7 @@ const axiosInstance = axios.create({
 
 axiosInstance.interceptors.request.use(
   function (config) {
-    const token = localStorage.getItem("isobar-jwt") || "";
+    const token = localStorage.getItem("isobar-token") || "";
 
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;

@@ -1,4 +1,5 @@
 import {
+  LOGOUT_SUCCESS,
   LOGIN_STARTED,
   LOGIN_SUCCESS,
   LOGIN_FAILURE,
@@ -7,36 +8,42 @@ import {
   GET_USER_LIST_FAILURE,
 } from "./actionTypes";
 
-// to get the list of users - started
+// logout - started
+export const logoutSuccess = () => {
+  return {
+    type: LOGOUT_SUCCESS,
+  };
+};
+// login - started
 export const loginStarted = () => {
   return {
-    type: GET_USER_LIST_STARTED,
+    type: LOGIN_STARTED,
   };
 };
 
-// to get the list of users - success
+// login - success
 export const loginSuccess = (data) => {
   return {
     type: LOGIN_SUCCESS,
     payload: {
-      data,
+      userData: data,
     },
   };
 };
 
-// to get the list of users - failure
+// login - failure
 export const loginFailure = (error) => {
   return {
     type: LOGIN_FAILURE,
     payload: {
-      error,
+      errorLogin: error,
     },
   };
 };
 // to get the list of users - started
 export const getUserListStarted = () => {
   return {
-    type: LOGIN_STARTED,
+    type: GET_USER_LIST_STARTED,
   };
 };
 

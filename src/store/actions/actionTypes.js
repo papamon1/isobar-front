@@ -1,3 +1,5 @@
+// logout - started
+export const LOGOUT_SUCCESS = "LOGIN_STARTED";
 // login - started
 export const LOGIN_STARTED = "LOGIN_STARTED";
 // login - success

@@ -80,6 +80,8 @@
             background-color: darkseagreen;
         }
         &--error{
+            width:50%;
+            margin:0 auto;
             border-color: crimson;
             background-color: tomato;
         }
@@ -103,6 +105,47 @@
         border-color: cyan;
     }   
 }
+
+.header{
+
+    &-header-wrapper{
+        padding: 16px !important;
+        height: 100px !important;
+        color: white !important;
+        background-color: #f74902 !important;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 600;
+    }
+
+
+    &__logo{
+        max-width: 80px;        
+    }
+
+    &__account{
+        
+        text-align: end;
+
+        &--small{
+            margin-top: 16px;
+            font-size: 10px;      
+            cursor: pointer;      
+        }
+    }
+}
+
+.text-center{
+    text-align: center;
+}
+
+.main-wrapper{
+    background-color: #ffffff;
+    padding: 32px;
+}
+
 
 // Overriding class for mobile 
 

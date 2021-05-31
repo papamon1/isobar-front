@@ -1,20 +1,21 @@
-import React, { useState, useEffect } from "react";
-import {
-  BrowserRouter,
-  Router,
-  Route,
-  Redirect,
-  Switch,
-} from "react-router-dom";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { Router, Route, Redirect, Switch } from "react-router-dom";
 import "./App.css";
 import { Button, Spin } from "antd";
 import "antd/dist/antd.css";
 import LoginPage from "./pages/loginPage";
 import WorkPage from "./pages/workPage";
 import history from "./history";
+import { checkUser } from "./store/asyncActions/userAsyncActions";
 
 function App() {
-  const [loggedUser, setLoggedUser] = useState(null);
+  const loggedUser = useSelector((state) => state.users.user);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(checkUser());
+  }, []);
 
   return (
     <React.Fragment>
@@ -33,7 +34,7 @@ function App() {
           <Router history={history}>
             <Switch>
               <Route path="/work" component={WorkPage} />
-              <Route path="/" />
+              <Redirect exact from="/" to="/work" />
               <Redirect exact from="*" to="/work" />
             </Switch>
           </Router>

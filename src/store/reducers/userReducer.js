@@ -1,5 +1,6 @@
 import axios from "axios";
 import {
+  LOGOUT_SUCCESS,
   LOGIN_STARTED,
   LOGIN_SUCCESS,
   LOGIN_FAILURE,
@@ -19,10 +20,19 @@ const initialState = {
 // update store based on type and payload and return the state
 const userReducer = (state = initialState, action) => {
   switch (action.type) {
+    case LOGOUT_SUCCESS:
+      return {
+        ...state,
+        user: null,
+        userList: null,
+        loading: false,
+        error: null,
+      };
     case GET_USER_LIST_STARTED:
       return {
         ...state,
         loading: true,
+        error: null,
       };
     case GET_USER_LIST_SUCCESS:
       const { data } = action.payload;
@@ -36,6 +46,7 @@ const userReducer = (state = initialState, action) => {
       return {
         ...state,
         error,
+        loading: false,
       };
     case LOGIN_STARTED:
       return {
@@ -48,12 +59,14 @@ const userReducer = (state = initialState, action) => {
         ...state,
         user: userData,
         loading: false,
+        error: null,
       };
     case LOGIN_FAILURE:
       const { errorLogin } = action.payload;
       return {
         ...state,
         error: errorLogin,
+        loading: false,
       };
     default:
       return state;
